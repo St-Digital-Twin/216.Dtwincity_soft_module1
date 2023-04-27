@@ -1,0 +1,35 @@
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_id/name
+
+sudo chmod -R 777 
+
+rm -rf postgres-data
+
+
+sudo chmod -R 777 . && rm -rf postgres-data
+
+
+docker cp /tmp/Apps.csv postgresql01:/tmp/Apps.csv
+
+
+COPY apps FROM '/tmp/Apps.csv'  DELIMITER ','  CSV HEADER;
+ SELECT * FROM apps;
+ SELECT NAME, count (*) from apps05 GROUP BY NAME ORDER BY COUNT DESC;
+ SELECT NAME, count (*) from apps GROUP BY NAME ORDER BY NAME;
+ 
+ 
+ 
+ psql -U PostUser01   #Connect to the PostgreSQL as user PostUser01
+ \list or \l   	List the databases
+
+CREATE DATABASE TDB01   Create a database called tdb01 (database will be created in lowercase)
+
+\c  Show what database you are currently connected to
+
+\c TDBO1  Connect to database TDB01
+
+
+docker cp /tmp/Apps.csv postgresql01:/tmp/Apps.csv  Copy the content of /tmp/Apps.csv on the Docker host machine to the Docker instance postgresql01 in the file /tmp/Apps.csv 
+
+
+
+https://gitlab.com/tangram-vision/oss/tangram-visions-blog/-/tree/main/2021.04.28_LoadingTestDataIntoPostgreSQL
